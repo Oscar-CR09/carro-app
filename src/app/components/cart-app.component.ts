@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ProductService } from '../services/product.service';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'cart-app',
@@ -9,4 +11,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class CartAppComponent {
 
+  productos:Product[] = [];
+  constructor(private service:ProductService){
+
+  }
 }
