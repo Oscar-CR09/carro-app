@@ -8,7 +8,9 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   imports: [ProductCardComponent],
   templateUrl: './catalogo.component.html'
 })
+
 export class CatalogoComponent {
+
   @Input() products!:Product[];
 
 }
