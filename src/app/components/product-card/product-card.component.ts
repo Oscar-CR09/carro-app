@@ -10,10 +10,12 @@ import { Product } from '../../models/product';
 export class ProductCardComponent {
 
   @Input() product!: Product;
+
   @Output() productEventEmitter: EventEmitter<ProductCardComponent> = new EventEmitter();
   onAddCart(product:Product){
+
     this.productEventEmitter.emit(product);
-    
+
   }
 }
 
