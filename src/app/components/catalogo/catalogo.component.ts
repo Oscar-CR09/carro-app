@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductCardComponent } from '../product-card/product-card.component';
-import { product } from '../../data/product.data';
+
 
 @Component({
   selector: 'catalogo',
@@ -16,7 +16,7 @@ export class CatalogoComponent {
 
   @Output() productEventEmiter:EventEmitter<Product> = new EventEmitter();
 
-  onAddCart : (product:Product) {
+  onAddCart(product:Product) {
 
     this.productEventEmiter.emit(product);
 

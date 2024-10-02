@@ -26,7 +26,21 @@ export class CartAppComponent implements OnInit {
 
   onAddCard(product:Product)
     {
-      this.items = [...this.items,{ product:{...product},quality:1}];
+      const hasItem =this.items.find(item=>item.product.id === product.id);
+      if(hasItem){
+        this.items =this.items.map(item=>{
+          if(item.product.id === product.id){
+            return{
+              ...item,
+              quality:item.quality +1
+            }
+          }
+          return item;
+        })
+      }else{
+        this.items = [...this.items,{ product:{...product},quality:1}];
+      }
+
     }
-    
+
   }
