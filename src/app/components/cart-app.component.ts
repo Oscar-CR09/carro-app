@@ -24,7 +24,7 @@ export class CartAppComponent implements OnInit {
     this.products=this.service.findAll();
   }
 
-  onAddCard(product:Product)
+  onAddCard(product:Product):void
     {
       const hasItem =this.items.find(item=>item.product.id === product.id);
       if(hasItem){
@@ -40,6 +40,12 @@ export class CartAppComponent implements OnInit {
       }else{
         this.items = [...this.items,{ product:{...product},quality:1}];
       }
+
+    }
+
+    onDeleteCart(id:number):void{
+
+      this.items=this.items.filter(item=>item.product.id !== id);
 
     }
 
