@@ -1,17 +1,30 @@
 <h2>  Catalogo de productos App </h2>
+<button class="bt btn-info btn-sm" (click)="openCart()" >show cart ({{items.length}})</button>
 
-<catalogo [products]="products" (productEventEmiter)="onAddCard($event)"/>
+<div class="row">
+  <div [className]="showCart? 'col-9' : 'col' ">
+    <catalogo [products]="products" (productEventEmiter)="onAddCard($event)"/>
+  </div>
 
+  @if (showCart) {
 
-@if (items.length>0) {
+    <div class="col-3">
 
-  <cart
-  [items]="items"
-  [total]="total"
-  (idProductEventEmiter)="onDeleteCart($event)"/>
+      @if (items.length>0) {
 
-}@else {
+        <cart
+        [items]="items"
+        [total]="total"
+        (idProductEventEmiter)="onDeleteCart($event)"/>
 
-  <div class="alert alert-warning">No hay elementos en el Cartel</div>
+      }@else {
 
-}
+        <div class="alert alert-warning">No hay elementos en el Cartel</div>
+
+      }
+      <button class="bt btn-secondary float-end" (click)="openCart()" >close cart </button>
+
+    </div>
+  }
+</div>
+
