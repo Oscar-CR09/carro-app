@@ -5,7 +5,10 @@
 
 @if (items.length>0) {
 
-  <cart [items]="items"(idProductEventEmiter)="onDeleteCart($event)"/>
+  <cart
+  [items]="items"
+  [total]="total"
+  (idProductEventEmiter)="onDeleteCart($event)"/>
 
 }@else {
 

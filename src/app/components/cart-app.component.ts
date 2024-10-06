@@ -17,6 +17,8 @@ export class CartAppComponent implements OnInit {
 
   items:CartItem[]=[];
 
+  total:number = 0;
+
   constructor(private service:ProductService){
 
   }
@@ -40,12 +42,19 @@ export class CartAppComponent implements OnInit {
       }else{
         this.items = [...this.items,{ product:{...product},quality:1}];
       }
+      this.calculateTotal();
 
     }
 
     onDeleteCart(id:number):void{
 
       this.items=this.items.filter(item=>item.product.id !== id);
+      this.calculateTotal();
+
+
+    }
+    calculateTotal():void{
+      this.total = this.items.reduce((accumulator, item)=> accumulator + item.quality * item.product.price,0);
 
     }
 
