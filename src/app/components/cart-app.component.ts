@@ -5,11 +5,12 @@ import { CatalogoComponent } from './catalogo/catalogo.component';
 import { CartComponent } from './cart/cart.component';
 import { CartItem } from '../models/cartItem';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CartModalComponent } from './cart-modal/cart-modal.component';
 
 @Component({
   selector: 'cart-app',
   standalone: true,
-  imports: [CatalogoComponent,CartComponent,NavbarComponent],
+  imports: [CatalogoComponent,CartModalComponent,NavbarComponent],
   templateUrl: './cart-app.component.html'
 })
 export class CartAppComponent implements OnInit {
@@ -70,7 +71,7 @@ export class CartAppComponent implements OnInit {
 
     }
 
-    openCart():void{
+    openCloseCart():void{
       this.showCart = !this.showCart;
 
     }
