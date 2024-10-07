@@ -1,32 +1,32 @@
-<navbar [items]="items" (openEventEmitter)="openCart()"/>
+<navbar [items]="items" (openEventEmitter)="openCart()" />
 
 <div class="container my-4">
-  <h2>  Catalogo de productos App </h2>
+  
+  <h2>Catalogo de productos App!</h2>
+  <catalogo [products]="products" (productEventEmiter)="onAddCard($event)" />
 
-  <div class="row">
-    <div [className]="showCart? 'col-9' : 'col' ">
-      <catalogo [products]="products" (productEventEmiter)="onAddCard($event)"/>
-    </div>
+  @if (showCart) {
 
-    @if (showCart) {
+  <div class="abrir-modal animacion fadeIn">
+    <div class="modal" style="display: block;" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-header">
+          <h5 class="modal-title"> Carro de Compras!</h5>
+        </div>
+        <div class="modal-body">
 
-      <div class="col-3">
+          @if (items.length>0) {
 
-        @if (items.length>0) {
+          <cart [items]="items" [total]="total" (idProductEventEmiter)="onDeleteCart($event)" />
 
-          <cart
-          [items]="items"
-          [total]="total"
-          (idProductEventEmiter)="onDeleteCart($event)"/>
-
-        }@else {
-
+          }@else {
           <div class="alert alert-warning">No hay elementos en el Cartel</div>
-
-        }
-        <button class="bt btn-secondary float-end" (click)="openCart()" >close cart </button>
-
+          }
+          <button class="bt btn-secondary float-end" (click)="openCart()">close cart </button>
+        </div>
       </div>
-    }
+    </div>
   </div>
+
+  }
 </div>
