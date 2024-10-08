@@ -13,7 +13,7 @@
 
             @if (items.length>0) {
 
-            <cart [items]="items" [total]="total" (idProductEventEmiter)="onDeleteCart($event)" />
+            <cart [items]="items" []="" (idProductEventEmiter)="onDeleteCart($event)" />
 
             }@else {
             <div class="alert alert-warning">No hay elementos en el Cartel</div>
